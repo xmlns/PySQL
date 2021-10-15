@@ -15,11 +15,12 @@ if (installDependencies == "yes" or installDependencies == "y"):
     installed_packages = [r.decode().split('==')[0] for r in reqs.split()]
     print(installed_packages)
 
-vincentUsername = input("\nYour username on Vincent: ")
+dbUsername = input("\nYour username on Vincent: ")
+dbName = ""
 sqlAdminPwd = input("\nPassword for the SQL Servers: ")
 serversToUpdate = ['your.server.URL-here.com', 'your.server.URL-is-near.com', 'gme.Power-2-the-Players.com']
 for server in serversToUpdate:
-    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};"+f"SERVER={server};DATABASE=Vincent;UID=Vincent;PWD={sqlAdminPwd};"
+    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};"+f"SERVER={server};DATABASE={dbName};UID=Vincent;PWD={sqlAdminPwd};"
     connection_url = url.URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
     print(f"\n{connection_url}\n")
     engine = create_engine(connection_url, echo=True, future=True)
