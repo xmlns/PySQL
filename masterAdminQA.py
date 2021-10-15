@@ -33,5 +33,5 @@ for server in serversToUpdate:
         print(f'\nExecuting update statement for {vincentUsername} on server: {server}')
         print(conn.execute(stmts))
 
-print('\nCongrats! You are now master admin on Master QA / QA Main / FS Sprint')
+print('\nCongrats! You are now master admin on your QA servers.')
 input('Press any key to exit.')
