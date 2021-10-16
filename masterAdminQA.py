@@ -17,20 +17,21 @@ if (installDependencies == "yes" or installDependencies == "y"):
 
 dbUsername = input("\nYour username on Vincent: ")
 dbName = ""
+dbAdminUser = ""
 sqlAdminPwd = input("\nPassword for the SQL Servers: ")
 serversToUpdate = ['your.server.URL-here.com', 'your.server.URL-is-near.com', 'gme.Power-2-the-Players.com']
 for server in serversToUpdate:
-    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};"+f"SERVER={server};DATABASE={dbName};UID=Vincent;PWD={sqlAdminPwd};"
+    connection_string = "DRIVER={ODBC Driver 17 for SQL Server};"+f"SERVER={server};DATABASE={dbName};UID={dbAdminUser};PWD={sqlAdminPwd};"
     connection_url = url.URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
     print(f"\n{connection_url}\n")
     engine = create_engine(connection_url, echo=True, future=True)
     metadata = MetaData()
     user_table = Table('User', metadata, autoload=True, autoload_with=engine)
-    stmts = (Update(user_table).where(user_table.c.Login == vincentUsername).values({"Administrator":1, "Master":1}))
+    stmts = (Update(user_table).where(user_table.c.Login == dbUsername).values({"Administrator":1, "Master":1}))
     
     print('Connecting to DB')
     with engine.begin() as conn:
-        print(f'\nExecuting update statement for {vincentUsername} on server: {server}')
+        print(f'\nExecuting update statement for {dbUsername} on server: {server}')
         print(conn.execute(stmts))
 
 print('\nCongrats! You are now master admin on your QA servers.')
