@@ -1,5 +1,5 @@
 # PySQL
-Experimenting with Python 🐍, PyODBC 🔌, and SQL Alchemy 🧪 to execute queries on multiple SQL Servers
+Experimenting with Python, PyODBC 🔌, and SQL Alchemy 🧪 to execute queries on multiple SQL Servers
 
 # Story
 Do you refresh your QA environments often?  
