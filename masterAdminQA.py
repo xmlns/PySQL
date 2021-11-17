@@ -4,6 +4,7 @@ from sqlalchemy.sql.schema import Table, MetaData
 
 installDependencies = input('Do you want to install python packages required to run this script? Yes/No/Y/N ').lower()
 if (installDependencies == "yes" or installDependencies == "y"):
+    # somewhere on stackoverflow, DM for credits thx
     import sys
     import subprocess
     # implement pip as a subprocess:
